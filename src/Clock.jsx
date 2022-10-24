@@ -11,10 +11,10 @@ const formatDate = date => moment(date).format('h:mm:ss A');
 const Clock = ({offset, location}) => {
   const [date, setDate] = useState(getTimeWithOffset(offset));
   useEffect(() => {
-    setInterval(() => {
+    const myInterval = setInterval(() => {
     setDate((getTimeWithOffset(offset)) + 1)
   }, 1000);
-  // return () => clearInterval(myInterval);
+  return () => clearInterval(myInterval);
 }, []);
   return(
     <div className="clock">
